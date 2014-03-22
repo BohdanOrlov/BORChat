@@ -1,0 +1,7 @@
+pod "BORChat", :path => "../BORChat.podspec"
+
+target "Demo" do
+end
+
+target "DemoTests" do
+end
