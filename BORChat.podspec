@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   # s.osx.deployment_target = '10.7'
   s.requires_arc = true
 
-  s.source_files = 'Classes'
+  s.source_files = 'Classes/**/*.{h,m}'
   s.resources = 'Resources'
 
   s.ios.exclude_files = 'Classes/osx'
@@ -34,4 +34,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'SomeFramework', 'AnotherFramework'
   # s.dependency 'JSONKit', '~> 1.4'
+s.dependency 'RSEnvironment'
 end

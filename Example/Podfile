@@ -1,7 +1,5 @@
+platform :ios, '7.0'
+
 pod "BORChat", :path => "../BORChat.podspec"
 
-target "Demo" do
-end
-
-target "DemoTests" do
-end
+link_with ['BORChatExample', 'BORChatExampleTests']

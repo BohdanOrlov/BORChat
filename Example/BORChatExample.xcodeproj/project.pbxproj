@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43D57F26564F4525A8E9579D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5840DC176264B7EAE3482BB /* libPods.a */; };
+		768B09F75FC247C98180E468 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5840DC176264B7EAE3482BB /* libPods.a */; };
+		76ECD1DC1D27544463040115 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECDA4BCA381166F467C5E0 /* UIKit.framework */; };
+		76ECD1E054959D2B2FA14685 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76ECDA15AF71A07C6F5EED0C /* Images.xcassets */; };
+		76ECD20E98E2210B53F49402 /* BORChatExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ECDE303200ACE0EFC5879B /* BORChatExampleTests.m */; };
+		76ECD3FA1AEDA6A626CA61C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ECD76B4D91CFA4DD166C75 /* main.m */; };
+		76ECD7144B215465CB144B7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76ECD4E439AFB48241948C39 /* InfoPlist.strings */; };
+		76ECD905D3B1253865326289 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECDCE5B953AB87E48DA709 /* XCTest.framework */; };
+		76ECD9616885E61FB4BB6882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76ECD3F0ABDCA2E89615B28C /* Main.storyboard */; };
+		76ECD985EDFEE8A8EC8CD63B /* BORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ECDF7EA0D1114CB6967D82 /* BORViewController.m */; };
+		76ECDB0B26C36935010827B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECDA4BCA381166F467C5E0 /* UIKit.framework */; };
+		76ECDB6F3C96115502F64C7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECD71C56D24E44584A3435 /* Foundation.framework */; };
+		76ECDC395E972B024DA42F4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76ECD3F654AE4F4DF0C2F20F /* InfoPlist.strings */; };
+		76ECDC6D6E7A34BE0AD98D02 /* BORAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ECD646FD3DB32B03D43985 /* BORAppDelegate.m */; };
+		76ECDE12857FB656B4A0E21E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECD0D2BB3B3EE2B9BBA63D /* CoreGraphics.framework */; };
+		76ECDFDEE217717DE8F5E42F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECD71C56D24E44584A3435 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		76ECD385FD83291C640EB45E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76ECDEDB49622487C2989398 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76ECD0F3C6E25A24A49DEB75;
+			remoteInfo = BORChatExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		76ECD0D2BB3B3EE2B9BBA63D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		76ECD2FCB41949AD3AE0C02D /* BORChatExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BORChatExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76ECD5A9E9C5D17EC68A58BB /* BORViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BORViewController.h; sourceTree = "<group>"; };
+		76ECD5AF82A8A1F0DE598883 /* BORChatExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "BORChatExample-Info.plist"; sourceTree = "<group>"; };
+		76ECD627D52D27C5FA85D8FC /* BORChatExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "BORChatExampleTests-Info.plist"; sourceTree = "<group>"; };
+		76ECD646FD3DB32B03D43985 /* BORAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BORAppDelegate.m; sourceTree = "<group>"; };
+		76ECD71C56D24E44584A3435 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		76ECD76B4D91CFA4DD166C75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		76ECD909162183F05E96D3A0 /* BORAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BORAppDelegate.h; sourceTree = "<group>"; };
+		76ECDA0618B3D1B0023364A9 /* BORChatExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BORChatExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76ECDA15AF71A07C6F5EED0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		76ECDA4BCA381166F467C5E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		76ECDBD84FD5F9A92AECE02D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		76ECDBD98B55E31BD02B8D39 /* BORChatExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BORChatExample-Prefix.pch"; sourceTree = "<group>"; };
+		76ECDCE5B953AB87E48DA709 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		76ECDD417F1D61E27FDA0AD9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		76ECDE303200ACE0EFC5879B /* BORChatExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BORChatExampleTests.m; sourceTree = "<group>"; };
+		76ECDF7EA0D1114CB6967D82 /* BORViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BORViewController.m; sourceTree = "<group>"; };
+		76ECDFC40F96D0DB64C230C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5840DC176264B7EAE3482BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8315506F37B45809E5F8D80 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76ECD526BB7573059032B8E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ECDFDEE217717DE8F5E42F /* Foundation.framework in Frameworks */,
+				76ECDE12857FB656B4A0E21E /* CoreGraphics.framework in Frameworks */,
+				76ECD1DC1D27544463040115 /* UIKit.framework in Frameworks */,
+				768B09F75FC247C98180E468 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76ECDFED3563CBCDEBF68C06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ECD905D3B1253865326289 /* XCTest.framework in Frameworks */,
+				76ECDB6F3C96115502F64C7A /* Foundation.framework in Frameworks */,
+				76ECDB0B26C36935010827B3 /* UIKit.framework in Frameworks */,
+				43D57F26564F4525A8E9579D /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76ECD09D6AF964CC1D13BCD0 /* BORChatExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				76ECDF7011069AAFEEBC7CBD /* Supporting Files */,
+				76ECDE303200ACE0EFC5879B /* BORChatExampleTests.m */,
+			);
+			path = BORChatExampleTests;
+			sourceTree = "<group>";
+		};
+		76ECD29560CA27DDA67AD510 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76ECD2FCB41949AD3AE0C02D /* BORChatExample.app */,
+				76ECDA0618B3D1B0023364A9 /* BORChatExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76ECD3ADD3DD5FCE6DB14D80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76ECD71C56D24E44584A3435 /* Foundation.framework */,
+				76ECD0D2BB3B3EE2B9BBA63D /* CoreGraphics.framework */,
+				76ECDA4BCA381166F467C5E0 /* UIKit.framework */,
+				76ECDCE5B953AB87E48DA709 /* XCTest.framework */,
+				A5840DC176264B7EAE3482BB /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76ECD41B6BDEC8054ED9AB56 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76ECD5AF82A8A1F0DE598883 /* BORChatExample-Info.plist */,
+				76ECD3F654AE4F4DF0C2F20F /* InfoPlist.strings */,
+				76ECD76B4D91CFA4DD166C75 /* main.m */,
+				76ECDBD98B55E31BD02B8D39 /* BORChatExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76ECD4E6C9DD58CC26B2EA07 = {
+			isa = PBXGroup;
+			children = (
+				76ECD29560CA27DDA67AD510 /* Products */,
+				76ECD3ADD3DD5FCE6DB14D80 /* Frameworks */,
+				76ECDFB66D452078BC3314C8 /* BORChatExample */,
+				76ECD09D6AF964CC1D13BCD0 /* BORChatExampleTests */,
+				D8315506F37B45809E5F8D80 /* Pods.xcconfig */,
+				76ECDE6CCA85A69D533CC657,
+				76ECD5E544A738BAB962D932,
+			);
+			sourceTree = "<group>";
+		};
+		76ECDF7011069AAFEEBC7CBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76ECD627D52D27C5FA85D8FC /* BORChatExampleTests-Info.plist */,
+				76ECD4E439AFB48241948C39 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76ECDFB66D452078BC3314C8 /* BORChatExample */ = {
+			isa = PBXGroup;
+			children = (
+				76ECD41B6BDEC8054ED9AB56 /* Supporting Files */,
+				76ECD909162183F05E96D3A0 /* BORAppDelegate.h */,
+				76ECD646FD3DB32B03D43985 /* BORAppDelegate.m */,
+				76ECDA15AF71A07C6F5EED0C /* Images.xcassets */,
+				76ECD3F0ABDCA2E89615B28C /* Main.storyboard */,
+				76ECD5A9E9C5D17EC68A58BB /* BORViewController.h */,
+				76ECDF7EA0D1114CB6967D82 /* BORViewController.m */,
+			);
+			path = BORChatExample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		76ECD0F3C6E25A24A49DEB75 /* BORChatExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76ECDF6E8A6548A715CCD713 /* Build configuration list for PBXNativeTarget "BORChatExample" */;
+			buildPhases = (
+				57D3271550374AB7A4CCFF4C /* Check Pods Manifest.lock */,
+				76ECD4DF83A1A7943A3F4437 /* Sources */,
+				76ECD526BB7573059032B8E3 /* Frameworks */,
+				76ECDD69F9D06A1C63C15737 /* Resources */,
+				86E720A73B024ECE8A164F91 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BORChatExample;
+			productName = BORChatExample;
+			productReference = 76ECD2FCB41949AD3AE0C02D /* BORChatExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		76ECD6DB734AA9B492D2C850 /* BORChatExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76ECD8C9CBF4799C08640ECD /* Build configuration list for PBXNativeTarget "BORChatExampleTests" */;
+			buildPhases = (
+				381B6429D0534EDFB36CD607 /* Check Pods Manifest.lock */,
+				76ECD565F415356C840CD8B9 /* Sources */,
+				76ECDFED3563CBCDEBF68C06 /* Frameworks */,
+				76ECD3C0FEAC91EA9B75C402 /* Resources */,
+				0DDE4210CC11434B82BCDEF3 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76ECD3E2E7FA8E9A75E60EDF /* PBXTargetDependency */,
+			);
+			name = BORChatExampleTests;
+			productName = BORChatExampleTests;
+			productReference = 76ECDA0618B3D1B0023364A9 /* BORChatExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76ECDEDB49622487C2989398 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Bohdan Orlov";
+			};
+			buildConfigurationList = 76ECD7D23DEC1AFCFB0DCC7F /* Build configuration list for PBXProject "BORChatExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 76ECD4E6C9DD58CC26B2EA07;
+			productRefGroup = 76ECD29560CA27DDA67AD510 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+			);
+			projectRoot = "";
+			targets = (
+				76ECD0F3C6E25A24A49DEB75 /* BORChatExample */,
+				76ECD6DB734AA9B492D2C850 /* BORChatExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76ECD3C0FEAC91EA9B75C402 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ECD7144B215465CB144B7B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76ECDD69F9D06A1C63C15737 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ECDC395E972B024DA42F4B /* InfoPlist.strings in Resources */,
+				76ECD1E054959D2B2FA14685 /* Images.xcassets in Resources */,
+				76ECD9616885E61FB4BB6882 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DDE4210CC11434B82BCDEF3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		381B6429D0534EDFB36CD607 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		57D3271550374AB7A4CCFF4C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		86E720A73B024ECE8A164F91 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76ECD4DF83A1A7943A3F4437 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ECD3FA1AEDA6A626CA61C4 /* main.m in Sources */,
+				76ECDC6D6E7A34BE0AD98D02 /* BORAppDelegate.m in Sources */,
+				76ECD985EDFEE8A8EC8CD63B /* BORViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76ECD565F415356C840CD8B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ECD20E98E2210B53F49402 /* BORChatExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76ECD3E2E7FA8E9A75E60EDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76ECD0F3C6E25A24A49DEB75 /* BORChatExample */;
+			targetProxy = 76ECD385FD83291C640EB45E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		76ECD3F0ABDCA2E89615B28C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76ECDFC40F96D0DB64C230C9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		76ECD3F654AE4F4DF0C2F20F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76ECDBD84FD5F9A92AECE02D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		76ECD4E439AFB48241948C39 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76ECDD417F1D61E27FDA0AD9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		76ECD1A238C74D3AA7897AB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8315506F37B45809E5F8D80 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BORChatExample/BORChatExample-Prefix.pch";
+				INFOPLIST_FILE = "BORChatExample/BORChatExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		76ECD21F236FA5B7DD7772BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8315506F37B45809E5F8D80 /* Pods.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BORChatExample/BORChatExample-Prefix.pch";
+				INFOPLIST_FILE = "BORChatExampleTests/BORChatExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		76ECD7D9E38F86565E858462 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		76ECD8433998717011E412D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8315506F37B45809E5F8D80 /* Pods.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BORChatExample/BORChatExample-Prefix.pch";
+				INFOPLIST_FILE = "BORChatExampleTests/BORChatExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		76ECD952564DE72E55BF05C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8315506F37B45809E5F8D80 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BORChatExample/BORChatExample-Prefix.pch";
+				INFOPLIST_FILE = "BORChatExample/BORChatExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		76ECDF43083A2149A660F3AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76ECD7D23DEC1AFCFB0DCC7F /* Build configuration list for PBXProject "BORChatExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76ECD7D9E38F86565E858462 /* Release */,
+				76ECDF43083A2149A660F3AC /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76ECD8C9CBF4799C08640ECD /* Build configuration list for PBXNativeTarget "BORChatExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76ECD8433998717011E412D3 /* Release */,
+				76ECD21F236FA5B7DD7772BF /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		76ECDF6E8A6548A715CCD713 /* Build configuration list for PBXNativeTarget "BORChatExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76ECD952564DE72E55BF05C3 /* Release */,
+				76ECD1A238C74D3AA7897AB6 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76ECDEDB49622487C2989398 /* Project object */;
+}
