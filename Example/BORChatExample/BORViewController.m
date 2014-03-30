@@ -18,8 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    BORChatRoom *chatRoom = [[BORChatRoom alloc] init];
-    [self.view addSubview:chatRoom.view];
+    self.chatRoom = [[BORChatRoom alloc] init];
+    [self.view addSubview:self.chatRoom.view];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

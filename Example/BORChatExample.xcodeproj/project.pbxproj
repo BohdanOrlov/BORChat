@@ -134,8 +134,6 @@
 				76ECDFB66D452078BC3314C8 /* BORChatExample */,
 				76ECD09D6AF964CC1D13BCD0 /* BORChatExampleTests */,
 				D8315506F37B45809E5F8D80 /* Pods.xcconfig */,
-				76ECDE6CCA85A69D533CC657,
-				76ECD5E544A738BAB962D932,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,8 +220,6 @@
 			mainGroup = 76ECD4E6C9DD58CC26B2EA07;
 			productRefGroup = 76ECD29560CA27DDA67AD510 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				76ECD0F3C6E25A24A49DEB75 /* BORChatExample */,
@@ -382,6 +378,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BORChatExample/BORChatExample-Prefix.pch";
 				INFOPLIST_FILE = "BORChatExample/BORChatExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -460,6 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BORChatExample/BORChatExample-Prefix.pch";
 				INFOPLIST_FILE = "BORChatExample/BORChatExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -522,6 +520,7 @@
 				76ECD21F236FA5B7DD7772BF /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76ECDF6E8A6548A715CCD713 /* Build configuration list for PBXNativeTarget "BORChatExample" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +529,7 @@
 				76ECD1A238C74D3AA7897AB6 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

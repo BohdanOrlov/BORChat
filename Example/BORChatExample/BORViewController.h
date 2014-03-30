@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class BORChatRoom;
+
 @interface BORViewController : UIViewController
 
+@property(nonatomic, strong) BORChatRoom *chatRoom;
 @end
