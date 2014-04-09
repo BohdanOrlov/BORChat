@@ -5,7 +5,13 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol BORChatMessage;
+@class BORChatCollectionViewController;
+
 
 @interface BORChatRoom : UIViewController
-
+@property (strong, nonatomic, readonly) BORChatCollectionViewController *chatCollectionViewController;
+@property(nonatomic, strong, readonly) UITextView *messageTextView;
+- (void)sendMessage;
+- (void)addMessage:(id <BORChatMessage>)message scrollToMessage:(BOOL)scrollToMessage;
 @end

@@ -1,7 +1,5 @@
 PODS:
-  - BORChat (0.1.0):
-    - RSEnvironment
-  - RSEnvironment (0.0.2)
+  - BORChat (0.1.0)
 
 DEPENDENCIES:
   - BORChat (from `../BORChat.podspec`)
@@ -11,7 +9,6 @@ EXTERNAL SOURCES:
     :path: ../BORChat.podspec
 
 SPEC CHECKSUMS:
-  BORChat: eb1e7ccaab97be0f86a3c51766d68cf6bd2909ed
-  RSEnvironment: 5ef47d23908f37374fb0c5a0a5e41e823f1bb042
+  BORChat: 86edae431c5b4e1dfe2c3c5421065c728ca5be13
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

@@ -1,5 +1,3 @@
-
-
 #import "BORChatCollectionViewCell.h"
 #import "BORChatMessage.h"
 
@@ -8,11 +6,15 @@
 #define kTextViewInsets UIEdgeInsetsMake(9, 10, 0, 10)
 
 @interface BORChatCollectionViewCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *bubbleImageView;
-@property (weak, nonatomic) IBOutlet UITextView *messageTextView;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewWidthConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
+@property (strong, nonatomic) UIImageView *bubbleImageView;
+@property (strong, nonatomic) UITextView *messageTextView;
+@property (strong, nonatomic) UILabel *timeLabel;
+@property (strong, nonatomic) NSLayoutConstraint *textViewWidthConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *textViewHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *leftAlignmentConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *rightAlignmentConstraint;
+@property (nonatomic, strong) id leftTimeLabelAlignmentConstraint;
+@property (nonatomic, strong) id rightTimeLabelAlignmentConstraint;
 @end
 
 static UIColor *initialColor;
@@ -23,44 +25,107 @@ static UIFont *messageFont;
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-
+        self.backgroundColor = [UIColor yellowColor];
+        [self.contentView addSubview:self.bubbleImageView];
+        [self.contentView addSubview:self.messageTextView];
+        [self.contentView addSubview:self.timeLabel];
+        self.leftAlignmentConstraint = [NSLayoutConstraint constraintsWithVisualFormat:@"|-5-[bubbleImageView]"
+            options:NSLayoutFormatAlignmentMask metrics:nil
+            views:@{@"bubbleImageView" : self.bubbleImageView}].lastObject;
+        self.rightAlignmentConstraint = [NSLayoutConstraint constraintsWithVisualFormat:@"[bubbleImageView]-5-|"
+            options:NSLayoutFormatAlignmentMask metrics:nil
+            views:@{@"bubbleImageView" : self.bubbleImageView}].lastObject;
+        self.leftTimeLabelAlignmentConstraint = [NSLayoutConstraint constraintsWithVisualFormat:@"[timeLabel]-5-|"
+            options:NSLayoutFormatAlignmentMask metrics:nil
+            views:@{@"timeLabel" : self.timeLabel}].lastObject;
+        self.rightTimeLabelAlignmentConstraint = [NSLayoutConstraint constraintsWithVisualFormat:@"|-5-[timeLabel]"
+            options:NSLayoutFormatAlignmentMask metrics:nil
+            views:@{@"timeLabel" : self.timeLabel}].lastObject;
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[bubbleImageView]|"
+            options:NSLayoutFormatAlignmentMask metrics:nil views:@{@"bubbleImageView" : self.bubbleImageView}]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[timeLabel]|"
+            options:NSLayoutFormatAlignmentMask metrics:nil views:@{@"timeLabel" : self.timeLabel}]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.bubbleImageView
+            attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.messageTextView
+            attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-10.0]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.bubbleImageView
+            attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.messageTextView
+            attribute:NSLayoutAttributeRight multiplier:1.0 constant:10.0]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.bubbleImageView
+            attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.messageTextView
+            attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.bubbleImageView
+            attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.messageTextView
+            attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     }
     return self;
-}
-
-- (void)setSelected:(BOOL)selected {
-    [super setSelected:selected];
-    [UIView animateWithDuration:0.33 animations:^{
-        if (selected)
-            self.messageTextView.backgroundColor = [UIColor colorWithRed:0.1 green:0.5 blue:0.9 alpha:1.0];
-        else
-            self.messageTextView.backgroundColor = initialColor;
-    }];
 }
 
 - (void)awakeFromNib {
 
 
-    initialColor = self.messageTextView.backgroundColor;
-    messageFont = [UIFont systemFontOfSize:16];
-    self.messageTextView.font = messageFont;
-    self.messageTextView.scrollsToTop = NO;
-    self.timeLabel.font = [UIFont systemFontOfSize:8];
-
-    self.timeLabel.textColor = [UIColor lightTextColor];
 }
 
+//- (void)setSelected:(BOOL)selected {
+//    [super setSelected:selected];
+//    [UIView animateWithDuration:0.33 animations:^{
+//        if (selected)
+//            self.messageTextView.backgroundColor = [UIColor colorWithRed:0.1 green:0.5 blue:0.9 alpha:1.0];
+//        else
+//            self.messageTextView.backgroundColor = initialColor;
+//    }];
+//}
+
+- (UIImageView *)bubbleImageView {
+    if (_bubbleImageView)
+        return _bubbleImageView;
+    _bubbleImageView = [[UIImageView alloc] init];
+    _bubbleImageView.translatesAutoresizingMaskIntoConstraints = NO;
+//    _bubbleImageView.backgroundColor = [UIColor redColor];
+    return _bubbleImageView;
+}
+
+- (UITextView *)messageTextView {
+    if (_messageTextView)
+        return _messageTextView;
+    _messageTextView = [[UITextView alloc] init];
+    _messageTextView.translatesAutoresizingMaskIntoConstraints = NO;
+    _messageTextView.editable = NO;
+    messageFont = [UIFont systemFontOfSize:15];
+    _messageTextView.font = messageFont;
+    _messageTextView.scrollsToTop = NO;
+    self.textViewWidthConstraint = [NSLayoutConstraint constraintWithItem:_messageTextView
+        attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil
+        attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0];
+    self.textViewHeightConstraint = [NSLayoutConstraint constraintWithItem:_messageTextView
+        attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil
+        attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0];
+    [_messageTextView addConstraints:@[self.textViewWidthConstraint, self.textViewHeightConstraint]];
+    return _messageTextView;
+}
+
+- (UILabel *)timeLabel {
+    if (_timeLabel)
+        return _timeLabel;
+    _timeLabel = [[UILabel alloc] init];
+    _timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _timeLabel.textAlignment = NSTextAlignmentCenter;
+    _timeLabel.font = [UIFont systemFontOfSize:13];
+    _timeLabel.textColor = [UIColor lightGrayColor];
+    return _timeLabel;
+}
 
 - (void)setMessage:(id <BORChatMessage>)message {
     _message = message;
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"h:mm a"];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
 
     //TODO
     self.senderOrigin = self.message.sentByCurrentUser ? WHChatCollectionViewCellSenderOriginRight : WHChatCollectionViewCellSenderOriginLeft;
     self.senderName = message.senderName;
     self.timeString = [[formatter stringFromDate:message.date] lowercaseString];
+    self.text = message.text;
 
 }
 
@@ -69,35 +134,58 @@ static UIFont *messageFont;
 
 
     if (self.senderOrigin == WHChatCollectionViewCellSenderOriginRight) {
+        self.messageTextView.backgroundColor = [UIColor purpleColor];
         self.messageTextView.textColor = [UIColor whiteColor];
 
         UIImage *image;
-        if (self.message.isLastMessageInARow)
+        if (self.message.lastMessageInARow)
             image = [UIImage imageNamed:@"usersLastMessageBubble.png"];
         else
             image = [UIImage imageNamed:@"usersMessageBubble.png"];
         self.bubbleImageView.image = [image stretchableImageWithLeftCapWidth:25 topCapHeight:18];
+        if ([self.contentView.constraints containsObject:self.leftAlignmentConstraint]) {
+            [self.contentView removeConstraint:self.leftAlignmentConstraint];
+        }
+        [self.contentView addConstraint:self.rightAlignmentConstraint];
+        if ([self.contentView.constraints containsObject:self.leftTimeLabelAlignmentConstraint]) {
+            [self.contentView removeConstraint:self.leftTimeLabelAlignmentConstraint];
+        }
+        [self.contentView addConstraint:self.rightTimeLabelAlignmentConstraint];
     }
     else {
-        self.messageTextView.textColor = [UIColor lightTextColor];
+        self.messageTextView.backgroundColor = [UIColor whiteColor];
+        self.messageTextView.textColor = [UIColor darkTextColor];
 
         UIImage *image;
-        if (self.message.isLastMessageInARow)
-            image = [UIImage imageNamed:@"othersLastMessageBubble.png"];
+        if (self.message.lastMessageInARow)
+            image = [UIImage imageNamed:@"othersLastMessageBubble"];
         else
-            image = [UIImage imageNamed:@"othersMessageBubble.png"];
+            image = [UIImage imageNamed:@"othersMessageBubble"];
         self.bubbleImageView.image = [image stretchableImageWithLeftCapWidth:25 topCapHeight:18];
+        if ([self.contentView.constraints containsObject:self.rightAlignmentConstraint]) {
+            [self.contentView removeConstraint:self.rightAlignmentConstraint];
+        }
+        [self.contentView addConstraint:self.leftAlignmentConstraint];
+        if ([self.contentView.constraints containsObject:self.rightTimeLabelAlignmentConstraint]) {
+            [self.contentView removeConstraint:self.rightTimeLabelAlignmentConstraint];
+        }
+        [self.contentView addConstraint:self.leftTimeLabelAlignmentConstraint];
     }
+}
+
+- (void)setText:(NSString *)text {
+    [self setText:text maxWidth:kMaxTextViewWidth];
 }
 
 - (void)setText:(NSString *)text maxWidth:(float)maxWidth {
     _text = text;
     self.messageTextView.text = text;
+    self.messageTextView.text = text;
     CGSize size = [self.class textViewSizeForText:text maxWidth:maxWidth];
 
     self.textViewWidthConstraint.constant = (CGFloat) ceil(size.width);
     self.textViewHeightConstraint.constant = (CGFloat) ceil(size.height);
-    [self.messageTextView layoutIfNeeded];
+    [self layoutIfNeeded];
 
 //    NSLog(@"%@, %@, %@, %@", text, NSStringFromCGSize(size), NSStringFromUIEdgeInsets(self.messageTextView.textContainerInset), NSStringFromCGSize(self.messageTextView.frame.size));
 }
@@ -128,8 +216,8 @@ static UIFont *messageFont;
     textView.font = font;
     CGSize size = [textView sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)];
 //    size.height += kTextViewInsets.top + kTextViewInsets.bottom;
-    size.height += 4; //magic for pixel perfect
-    size.width += kTextViewInsets.left + kTextViewInsets.right;
+//    size.height += 4; //magic for pixel perfect
+//    size.width += kTextViewInsets.left + kTextViewInsets.right;
     return size;
 }
 
@@ -139,7 +227,7 @@ static UIFont *messageFont;
     float height = size.height;
 
 
-    height += 4; //top spacing
+    height += 16; //top spacing
 
     return CGSizeMake(320, height);
 }

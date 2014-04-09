@@ -9,5 +9,6 @@
 
 @interface BORChatCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic, readonly) NSMutableArray *messages;
-- (void) addMessage:(id <BORChatMessage>)message;
+- (void)addMessage:(id <BORChatMessage>)message scrollToMessage:(BOOL)scrollToMessage;
+- (void)scrollToLastMessage;
 @end

@@ -8,4 +8,6 @@
 @implementation BORChatMessage {
 
 }
+
+
 @end
