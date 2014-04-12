@@ -22,7 +22,7 @@
         <!--View Controller-->
         <scene sceneID="rOF-0F-uB8">
             <objects>
-                <viewController id="lgo-jA-DDh" customClass="BORViewController" sceneMemberID="viewController">
+                <viewController id="lgo-jA-DDh" customClass="BORMyAppChatRoomController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dKt-ut-lXM"/>
                         <viewControllerLayoutGuide type="bottom" id="MPE-gK-WJS"/>

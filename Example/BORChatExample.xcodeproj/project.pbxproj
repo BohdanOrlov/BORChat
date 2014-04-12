@@ -16,7 +16,7 @@
 		76ECD7144B215465CB144B7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76ECD4E439AFB48241948C39 /* InfoPlist.strings */; };
 		76ECD905D3B1253865326289 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECDCE5B953AB87E48DA709 /* XCTest.framework */; };
 		76ECD9616885E61FB4BB6882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76ECD3F0ABDCA2E89615B28C /* Main.storyboard */; };
-		76ECD985EDFEE8A8EC8CD63B /* BORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ECDF7EA0D1114CB6967D82 /* BORViewController.m */; };
+		76ECD985EDFEE8A8EC8CD63B /* BORMyAppChatRoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ECDF7EA0D1114CB6967D82 /* BORMyAppChatRoomController.m */; };
 		76ECDB0B26C36935010827B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECDA4BCA381166F467C5E0 /* UIKit.framework */; };
 		76ECDB6F3C96115502F64C7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ECD71C56D24E44584A3435 /* Foundation.framework */; };
 		76ECDC395E972B024DA42F4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76ECD3F654AE4F4DF0C2F20F /* InfoPlist.strings */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		76ECD0D2BB3B3EE2B9BBA63D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		76ECD2FCB41949AD3AE0C02D /* BORChatExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BORChatExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		76ECD5A9E9C5D17EC68A58BB /* BORViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BORViewController.h; sourceTree = "<group>"; };
+		76ECD5A9E9C5D17EC68A58BB /* BORMyAppChatRoomController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BORMyAppChatRoomController.h; sourceTree = "<group>"; };
 		76ECD5AF82A8A1F0DE598883 /* BORChatExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "BORChatExample-Info.plist"; sourceTree = "<group>"; };
 		76ECD627D52D27C5FA85D8FC /* BORChatExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "BORChatExampleTests-Info.plist"; sourceTree = "<group>"; };
 		76ECD646FD3DB32B03D43985 /* BORAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BORAppDelegate.m; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		76ECDCE5B953AB87E48DA709 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		76ECDD417F1D61E27FDA0AD9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76ECDE303200ACE0EFC5879B /* BORChatExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BORChatExampleTests.m; sourceTree = "<group>"; };
-		76ECDF7EA0D1114CB6967D82 /* BORViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BORViewController.m; sourceTree = "<group>"; };
+		76ECDF7EA0D1114CB6967D82 /* BORMyAppChatRoomController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BORMyAppChatRoomController.m; sourceTree = "<group>"; };
 		76ECDFC40F96D0DB64C230C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5840DC176264B7EAE3482BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8315506F37B45809E5F8D80 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -154,8 +154,8 @@
 				76ECD646FD3DB32B03D43985 /* BORAppDelegate.m */,
 				76ECDA15AF71A07C6F5EED0C /* Images.xcassets */,
 				76ECD3F0ABDCA2E89615B28C /* Main.storyboard */,
-				76ECD5A9E9C5D17EC68A58BB /* BORViewController.h */,
-				76ECDF7EA0D1114CB6967D82 /* BORViewController.m */,
+				76ECD5A9E9C5D17EC68A58BB /* BORMyAppChatRoomController.h */,
+				76ECDF7EA0D1114CB6967D82 /* BORMyAppChatRoomController.m */,
 			);
 			path = BORChatExample;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 			files = (
 				76ECD3FA1AEDA6A626CA61C4 /* main.m in Sources */,
 				76ECDC6D6E7A34BE0AD98D02 /* BORAppDelegate.m in Sources */,
-				76ECD985EDFEE8A8EC8CD63B /* BORViewController.m in Sources */,
+				76ECD985EDFEE8A8EC8CD63B /* BORMyAppChatRoomController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

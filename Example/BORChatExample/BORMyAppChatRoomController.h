@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BORChatRoom.h"
+#import <BORChat/BORChatRoom.h>
 
-@class BORChatRoom;
-
-@interface BORViewController : BORChatRoom
+@interface BORMyAppChatRoomController : BORChatRoom
 
 @end

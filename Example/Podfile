@@ -1,5 +1,6 @@
 platform :ios, '7.0'
 
-pod "BORChat", :path => "../BORChat.podspec"
+pod "BORChat"
+#pod "BORChat", :path => "../BORChat.podspec"
 
 link_with ['BORChatExample', 'BORChatExampleTests']

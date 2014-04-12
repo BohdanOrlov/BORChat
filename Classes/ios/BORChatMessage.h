@@ -10,6 +10,9 @@
 @property (strong, nonatomic) NSDate *date;
 @property (assign, nonatomic) BOOL sentByCurrentUser;
 @property (assign, nonatomic) BOOL lastMessageInARow;
+@optional
+@property (strong, nonatomic) UIColor *bubbleColor;
+@property (strong, nonatomic) UIColor *textColor;
 @end
 
 @interface BORChatMessage : NSObject <BORChatMessage>
@@ -18,4 +21,5 @@
 @property (strong, nonatomic) NSDate *date;
 @property (assign, nonatomic) BOOL sentByCurrentUser;
 @property (assign, nonatomic) BOOL lastMessageInARow;
+@property (strong, nonatomic) UIColor *bubbleColor;
 @end

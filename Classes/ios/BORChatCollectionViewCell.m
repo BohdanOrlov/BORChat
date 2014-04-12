@@ -1,6 +1,10 @@
 #import "BORChatCollectionViewCell.h"
 #import "BORChatMessage.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor \
+       colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+       green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+       blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define kMaxTextViewWidth 220.0
 #define kTextViewInsets UIEdgeInsetsMake(9, 10, 0, 10)
@@ -19,13 +23,18 @@
 
 static UIColor *initialColor;
 static UIFont *messageFont;
+static NSCache *imageCache;
 
 @implementation BORChatCollectionViewCell
+
++ (void)initialize {
+    messageFont = [UIFont systemFontOfSize:15];
+}
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor yellowColor];
+//        self.backgroundColor = [UIColor yellowColor];
         [self.contentView addSubview:self.bubbleImageView];
         [self.contentView addSubview:self.messageTextView];
         [self.contentView addSubview:self.timeLabel];
@@ -91,7 +100,6 @@ static UIFont *messageFont;
     _messageTextView = [[UITextView alloc] init];
     _messageTextView.translatesAutoresizingMaskIntoConstraints = NO;
     _messageTextView.editable = NO;
-    messageFont = [UIFont systemFontOfSize:15];
     _messageTextView.font = messageFont;
     _messageTextView.scrollsToTop = NO;
     self.textViewWidthConstraint = [NSLayoutConstraint constraintWithItem:_messageTextView
@@ -110,7 +118,7 @@ static UIFont *messageFont;
     _timeLabel = [[UILabel alloc] init];
     _timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _timeLabel.textAlignment = NSTextAlignmentCenter;
-    _timeLabel.font = [UIFont systemFontOfSize:13];
+    _timeLabel.font = [UIFont systemFontOfSize:11];
     _timeLabel.textColor = [UIColor lightGrayColor];
     return _timeLabel;
 }
@@ -128,21 +136,67 @@ static UIFont *messageFont;
     self.text = message.text;
 
 }
+- (UIImage *)colorImage:(UIImage *)origImage withColor:(UIColor *)color
+{
+// begin a new image context, to draw our colored image onto
+    UIGraphicsBeginImageContextWithOptions(origImage.size, NO, [UIScreen mainScreen].scale);
 
+// get a reference to that context we created
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+// set the fill color
+    [color setFill];
+
+// translate/flip the graphics context (for transforming from CG* coords to UI* coords
+    CGContextTranslateCTM(context, 0, origImage.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+
+    CGContextSetBlendMode(context, kCGBlendModeNormal);
+    CGRect rect = CGRectMake(0, 0, origImage.size.width, origImage.size.height);
+//    CGContextDrawImage(context, rect, origImage.CGImage);
+
+// set a mask that matches the shape of the image, then draw (color burn) a colored rectangle
+    CGContextClipToMask(context, rect, origImage.CGImage);
+    CGContextAddRect(context, rect);
+    CGContextDrawPath(context,kCGPathFill);
+
+
+// generate a new UIImage from the graphics context we drew onto
+    UIImage *coloredImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+//return the color-burned image
+    return coloredImg;
+
+}
+- (UIImage *) cachedImageWithName:(NSString *)name color:(UIColor *)color{
+    NSString *key = [name stringByAppendingString:color.description];
+    if ([imageCache objectForKey:key])
+        return [imageCache objectForKey:key];
+    if(!imageCache)
+        imageCache = [[NSCache alloc] init];
+    UIImage *image = [[self colorImage:[UIImage imageNamed:name] withColor:color] stretchableImageWithLeftCapWidth:25
+        topCapHeight:18];
+    [imageCache setObject:image forKey:key];
+    return image;
+}
 - (void)setSenderOrigin:(WHChatCollectionViewCellSenderOrigin)senderOrigin {
     _senderOrigin = senderOrigin;
 
-
+    self.messageTextView.backgroundColor = [UIColor clearColor];
+    UIColor *bubbleColor = [self bubbleColor];
+//        self.messageTextView.backgroundColor = bubbleColor;
     if (self.senderOrigin == WHChatCollectionViewCellSenderOriginRight) {
-        self.messageTextView.backgroundColor = [UIColor purpleColor];
         self.messageTextView.textColor = [UIColor whiteColor];
 
         UIImage *image;
+
+
         if (self.message.lastMessageInARow)
-            image = [UIImage imageNamed:@"usersLastMessageBubble.png"];
+            image = [self cachedImageWithName:@"usersLastMessageBubble.png" color:bubbleColor];
         else
-            image = [UIImage imageNamed:@"usersMessageBubble.png"];
-        self.bubbleImageView.image = [image stretchableImageWithLeftCapWidth:25 topCapHeight:18];
+            image = [self cachedImageWithName:@"usersMessageBubble.png" color:bubbleColor];
+        self.bubbleImageView.image = image;
         if ([self.contentView.constraints containsObject:self.leftAlignmentConstraint]) {
             [self.contentView removeConstraint:self.leftAlignmentConstraint];
         }
@@ -153,14 +207,13 @@ static UIFont *messageFont;
         [self.contentView addConstraint:self.rightTimeLabelAlignmentConstraint];
     }
     else {
-        self.messageTextView.backgroundColor = [UIColor whiteColor];
         self.messageTextView.textColor = [UIColor darkTextColor];
 
         UIImage *image;
         if (self.message.lastMessageInARow)
-            image = [UIImage imageNamed:@"othersLastMessageBubble"];
+            image = [self cachedImageWithName:@"othersLastMessageBubble.png" color:bubbleColor];
         else
-            image = [UIImage imageNamed:@"othersMessageBubble"];
+            image = [self cachedImageWithName:@"othersMessageBubble.png" color:bubbleColor];
         self.bubbleImageView.image = [image stretchableImageWithLeftCapWidth:25 topCapHeight:18];
         if ([self.contentView.constraints containsObject:self.rightAlignmentConstraint]) {
             [self.contentView removeConstraint:self.rightAlignmentConstraint];
@@ -171,6 +224,15 @@ static UIFont *messageFont;
         }
         [self.contentView addConstraint:self.leftTimeLabelAlignmentConstraint];
     }
+}
+
+- (UIColor *)bubbleColor {
+    UIColor *color;
+    if([self.message respondsToSelector:@selector(bubbleColor)])
+        color = self.message.bubbleColor;
+    if(!color)
+        color = self.message.sentByCurrentUser ? UIColorFromRGB(0x047eff) : UIColorFromRGB(0xe5e5ea);
+    return color;
 }
 
 - (void)setText:(NSString *)text {
@@ -227,7 +289,7 @@ static UIFont *messageFont;
     float height = size.height;
 
 
-    height += 16; //top spacing
+//    height += 16; //top spacing
 
     return CGSizeMake(320, height);
 }

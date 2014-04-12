@@ -8,7 +8,12 @@
 #import "BORChatMessage.h"
 #import "BORSpringFlowLayout.h"
 
-static const int BORChatRoomMessageContainerHeight = 60;
+#define UIColorFromRGB(rgbValue) [UIColor \
+       colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+       green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+       blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+static const int BORChatRoomMessageContainerHeight = 40;
 static const int BORChatRoomDefaultSpacing = 10;
 
 @interface BORChatRoom () <UITextViewDelegate>
@@ -41,8 +46,8 @@ static const int BORChatRoomDefaultSpacing = 10;
 
 - (void)viewDidLoad {
 
-    self.chatCollectionViewController = [[BORChatCollectionViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
-//    self.chatCollectionViewController = [[BORChatCollectionViewController alloc] initWithCollectionViewLayout:[[BORSpringFlowLayout alloc] init]];
+//    self.chatCollectionViewController = [[BORChatCollectionViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    self.chatCollectionViewController = [[BORChatCollectionViewController alloc] initWithCollectionViewLayout:[[BORSpringFlowLayout alloc] init]];
     UICollectionView *collectionView = self.chatCollectionViewController.collectionView;
     collectionView.frame = self.view.bounds;
 //    collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -79,7 +84,7 @@ static const int BORChatRoomDefaultSpacing = 10;
     if (self.tabBarController && [[[self tabBarController] tabBar] isHidden]) {
         insets.bottom += [[[self tabBarController] tabBar] frame].size.height;
     }
-    insets.bottom += self.keyboardSize.height;
+    insets.bottom += self.keyboardSize.height + 10;
     collectionView.contentInset = insets;
 }
 
@@ -119,23 +124,28 @@ static const int BORChatRoomDefaultSpacing = 10;
     [_messageContainer addSubview:blurToolbar];
 
     UIView *separatorView = [[UIView alloc] init];
-    separatorView.backgroundColor = [UIColor grayColor];
+    separatorView.backgroundColor =  UIColorFromRGB(0xadadad);
     separatorView.translatesAutoresizingMaskIntoConstraints = NO;
-    [separatorView addConstraint:[NSLayoutConstraint constraintWithItem:separatorView attribute:NSLayoutAttributeHeight
-        relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0
-        constant:1.0]];
+//    [separatorView addConstraint:[NSLayoutConstraint constraintWithItem:separatorView attribute:NSLayoutAttributeHeight
+//        relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1
+//        constant:1]];
+    separatorView.frame = CGRectMake(0, 0, 0, 0.5);
     [_messageContainer addSubview:separatorView];
     [_messageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[separatorView]|"
         options:NSLayoutFormatAlignAllTop metrics:nil views:@{@"separatorView" : separatorView}]];
+//    [_messageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(-0.5)-[separatorView]"
+//        options:NSLayoutFormatAlignAllTop metrics:nil views:@{@"separatorView" : separatorView}]];`
 
 
     [_messageContainer addSubview:self.messageTextView];
     [_messageContainer addSubview:self.messageSendButton];
     NSDictionary *views = @{@"messageTextView" : self.messageTextView, @"messageSendButton" : self.messageSendButton};
     [_messageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-s-[messageTextView]-s-[messageSendButton(44)]-s-|"
-        options:NSLayoutFormatAlignAllBottom metrics:@{@"s" : @(BORChatRoomDefaultSpacing)} views:views]];
-    [_messageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-s-[messageTextView]-s-|"
-        options:NSLayoutFormatAlignAllBottom metrics:@{@"s" : @(BORChatRoomDefaultSpacing)} views:views]];
+        options:NSLayoutFormatAlignAllBaseline metrics:@{@"s" : @(BORChatRoomDefaultSpacing)} views:views]];
+    [_messageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-t-[messageTextView]-b-|"
+        options:NSLayoutFormatAlignAllBottom metrics:@{@"t" : @(7), @"b": @(5)} views:views]];
+    [_messageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[messageSendButton]|"
+        options:NSLayoutFormatAlignAllBottom metrics:nil views:views]];
 
     return _messageContainer;
 }
@@ -148,13 +158,13 @@ static const int BORChatRoomDefaultSpacing = 10;
     _messageTextView.scrollsToTop = NO;
     _messageTextView.backgroundColor = [UIColor whiteColor];
     _messageTextView.layer.cornerRadius = 5;
-    _messageTextView.layer.borderColor = [[UIColor grayColor] CGColor];
-    _messageTextView.layer.borderWidth = 1.0;
+    _messageTextView.layer.borderColor = UIColorFromRGB(0xc8c8cd).CGColor;
+    _messageTextView.layer.borderWidth = 0.5;
     _messageTextView.delegate = self;
     self.messageTextViewHeightConstraint = [NSLayoutConstraint constraintWithItem:_messageTextView
         attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil
         attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0
-        constant:BORChatRoomMessageContainerHeight - BORChatRoomDefaultSpacing * 2];
+        constant:BORChatRoomMessageContainerHeight - 7 - 5];
     [_messageTextView addConstraint:self.messageTextViewHeightConstraint];
 
     return _messageTextView;
@@ -166,7 +176,7 @@ static const int BORChatRoomDefaultSpacing = 10;
     _messagePlaceholder = [[UILabel alloc] init];
     _messagePlaceholder.text = @"Text Message";
     _messagePlaceholder.font = [UIFont systemFontOfSize:13];
-    _messagePlaceholder.textColor = [UIColor lightGrayColor];
+    _messagePlaceholder.textColor = UIColorFromRGB(0xc7c7cc);
     return _messagePlaceholder;
 }
 
@@ -176,6 +186,8 @@ static const int BORChatRoomDefaultSpacing = 10;
     _messageSendButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _messageSendButton.translatesAutoresizingMaskIntoConstraints = NO;
     [_messageSendButton setTitle:@"Send" forState:UIControlStateNormal];
+    _messageSendButton.tintColor = UIColorFromRGB(0x8e8e93);
+    _messageSendButton.titleLabel.font = [UIFont boldSystemFontOfSize:_messageSendButton.titleLabel.font.pointSize];
     [_messageSendButton addConstraint:[NSLayoutConstraint constraintWithItem:_messageSendButton
         attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil
         attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:36.0]];
@@ -194,12 +206,12 @@ static const int BORChatRoomDefaultSpacing = 10;
 #pragma mark - Protocols
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    [self.chatCollectionViewController scrollToLastMessage];
+    [self.chatCollectionViewController scrollToLastMessageAnimated:YES ];
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
     [self updateMessageTextViewSizeAndInset:textView];
-    [self.chatCollectionViewController scrollToLastMessage];
+    [self.chatCollectionViewController scrollToLastMessageAnimated:YES ];
     if (self.messageTextView.text.length)
         self.messagePlaceholder.hidden = YES;
     else
@@ -227,11 +239,14 @@ static const int BORChatRoomDefaultSpacing = 10;
     self.keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     [self updateMessageTextViewSizeAndInset:self.messageTextView];
     [self.view layoutIfNeeded];
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:[userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+    [UIView setAnimationCurve:[userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
         self.lastKeyboardHeight = self.keyboardSize.height;
         self.bottomSpacingConstraint.constant = self.lastKeyboardHeight;
         [self.view layoutIfNeeded];
-    } completion:nil];
+    [UIView commitAnimations];
 }
 
 - (void)keyboardWillHide:(id)keyboardDidHide {
@@ -239,10 +254,12 @@ static const int BORChatRoomDefaultSpacing = 10;
     self.keyboardSize = CGSizeZero;
     [self updateMessageTextViewSizeAndInset:self.messageTextView];
     [self.view layoutIfNeeded];
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:[userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+    [UIView setAnimationCurve:6];
         self.bottomSpacingConstraint.constant = 0;
         [self.view layoutIfNeeded];
-    } completion:nil];
+    [UIView commitAnimations];
 }
 
 - (void)addMessage:(id <BORChatMessage>)message scrollToMessage:(BOOL)scrollToMessage {

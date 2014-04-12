@@ -6,6 +6,8 @@
 #import "BORChatMessage.h"
 #import "BORChatCollectionViewCell.h"
 #import "BORChatCollectionViewHeader.h"
+#import "BORSpringFlowLayout.h"
+
 
 @interface BORChatCollectionViewController ()
 @property (strong, nonatomic) NSMutableArray *messages;
@@ -27,7 +29,8 @@
 
 
 - (void)viewDidLoad {
-    self.collectionView.backgroundColor = [UIColor colorWithRed:0.7 green:1 blue:0.7 alpha:1.0];
+//    self.collectionView.backgroundColor = [UIColor colorWithRed:0.7 green:1 blue:0.7 alpha:1.0];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.collectionView.alwaysBounceVertical = YES;
     [self.collectionView registerClass:[BORChatCollectionViewCell class]
@@ -36,8 +39,9 @@
     [self.collectionView registerClass:[BORChatCollectionViewHeader class]
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
         withReuseIdentifier:[self headerReuseIdentifier]];
-    layout.minimumLineSpacing = 0;
+    layout.minimumLineSpacing = 2;
     layout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 35);
+    self.layout = (BORSpringFlowLayout *) layout;
 }
 
 - (NSString *)cellReuseIdentifier {
@@ -82,10 +86,6 @@
     [message setLastMessageInARow:YES];
     [self.messages addObject:message];
     [self addMessageToAppropriateSection:message scrollToMessage:scrollToMessage];
-    //fixes issue with wrong size of first message
-    if (self.messages.count == 1){
-        [self.collectionView reloadData];
-    }
 }
 
 - (void)addMessageToAppropriateSection:(id <BORChatMessage>)message scrollToMessage:(BOOL)scrollToMessage {
@@ -97,6 +97,8 @@
         }
         else if (self.messagesBySections.count && ([[self.messagesBySections.lastObject lastObject] sentByCurrentUser] == message.sentByCurrentUser)) {
             [[self.messagesBySections.lastObject lastObject] setLastMessageInARow:NO];
+            [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.messagesBySections.lastObject count]-1
+                inSection:self.messagesBySections.count -1]]];
         }
         [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.messagesBySections.lastObject count]
             inSection:self.messagesBySections.count - 1]]];
@@ -107,7 +109,7 @@
                 return;
             //fixes scroll to first cell that added into bottom inset area.
             [self.collectionView scrollRectToVisible:[self.collectionView.visibleCells.lastObject frame] animated:YES];
-            [self scrollToLastMessage];
+            [self scrollToLastMessageAnimated:YES ];
         }];
 
 }
@@ -116,7 +118,7 @@
     return [message.date timeIntervalSinceDate:[[self.messagesBySections.lastObject lastObject] date]] > 60 * 60;
 }
 
-- (void)scrollToLastMessage {
+- (void)scrollToLastMessageAnimated:(BOOL)animated {
     if(!self.messages.count)
         return;
     NSUInteger indexOfLastSection = self.messagesBySections.count - 1;
@@ -124,6 +126,6 @@
     NSIndexPath *path = [NSIndexPath indexPathForItem:indexOfMessageInLastSection
         inSection:indexOfLastSection];
     [self.collectionView scrollToItemAtIndexPath:path
-        atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+        atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:animated];
 }
 @end
