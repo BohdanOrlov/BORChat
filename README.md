@@ -3,7 +3,11 @@
 [![Version](http://cocoapod-badges.herokuapp.com/v/BORChat/badge.png)](http://cocoadocs.org/docsets/BORChat)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/BORChat/badge.png)](http://cocoadocs.org/docsets/BORChat)
 
+Chat room that tries to mimic iMessage with bouncy bubbles
+
 ## Usage
+
+![image](http://giant.gfycat.com/BelatedFoolhardyCaudata.gif)
 
 To run the example project; clone the repo, and run `pod install` from the Example directory first.
 
