@@ -263,6 +263,10 @@ static const int BORChatRoomDefaultSpacing = 10;
 }
 
 - (void)addMessage:(id <BORChatMessage>)message scrollToMessage:(BOOL)scrollToMessage {
+    if([_messageTextView.text length] == 0)
+    {
+        return;
+    }
     [self.chatCollectionViewController addMessage:message scrollToMessage:scrollToMessage];
 }
 
