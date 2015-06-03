@@ -120,9 +120,6 @@ static const int BORChatRoomDefaultSpacing = 10;
 
     _messageContainer = [[UIView alloc] init];
     _messageContainer.translatesAutoresizingMaskIntoConstraints = NO;
-    UIToolbar *blurToolbar = [[UIToolbar alloc] initWithFrame:self.view.bounds];
-    blurToolbar.autoresizingMask = self.view.autoresizingMask;
-    [_messageContainer addSubview:blurToolbar];
 
     UIView *separatorView = [[UIView alloc] init];
     separatorView.backgroundColor =  UIColorFromRGB(0xadadad);
