@@ -190,7 +190,7 @@ static const int BORChatRoomDefaultSpacing = 10;
     _messageSendButton.titleLabel.font = [UIFont boldSystemFontOfSize:_messageSendButton.titleLabel.font.pointSize];
     [_messageSendButton addConstraint:[NSLayoutConstraint constraintWithItem:_messageSendButton
         attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil
-        attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:36.0]];
+        attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:40.0]];
     [_messageSendButton addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
     return _messageSendButton;
 }
