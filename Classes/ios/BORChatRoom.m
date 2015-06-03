@@ -18,10 +18,6 @@ static const int BORChatRoomDefaultSpacing = 10;
 
 @interface BORChatRoom () <UITextViewDelegate>
 @property (strong, nonatomic) BORChatCollectionViewController *chatCollectionViewController;
-@property (nonatomic, strong) UIView *messageContainer;
-@property (nonatomic, strong) UITextView *messageTextView;
-@property (nonatomic, strong) UIButton *messageSendButton;
-@property (nonatomic, strong) UILabel *messagePlaceholder;
 @property (nonatomic, strong) NSLayoutConstraint *messageTextViewHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *bottomSpacingConstraint;
 @property (nonatomic) CGFloat lastKeyboardHeight;
@@ -29,6 +25,11 @@ static const int BORChatRoomDefaultSpacing = 10;
 @end
 
 @implementation BORChatRoom
+
+@synthesize messageContainer = _messageContainer;
+@synthesize messagePlaceholder = _messagePlaceholder;
+@synthesize messageSendButton = _messageSendButton;
+@synthesize messageTextView = _messageTextView;
 
 #pragma mark - Lifecycle
 

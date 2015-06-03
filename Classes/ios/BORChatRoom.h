@@ -10,8 +10,14 @@
 
 
 @interface BORChatRoom : UIViewController
+
 @property (strong, nonatomic, readonly) BORChatCollectionViewController *chatCollectionViewController;
-@property(nonatomic, strong, readonly) UITextView *messageTextView;
+
+@property (nonatomic, strong, readonly) UIView *messageContainer;
+@property (nonatomic, strong, readonly) UITextView *messageTextView;
+@property (nonatomic, strong, readonly) UIButton *messageSendButton;
+@property (nonatomic, strong, readonly) UILabel *messagePlaceholder;
+
 - (void)sendMessage;
 - (void)addMessage:(id <BORChatMessage>)message scrollToMessage:(BOOL)scrollToMessage;
 @end
