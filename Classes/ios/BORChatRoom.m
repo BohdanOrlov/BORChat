@@ -18,10 +18,6 @@ static const int BORChatRoomDefaultSpacing = 10;
 
 @interface BORChatRoom () <UITextViewDelegate>
 @property (strong, nonatomic) BORChatCollectionViewController *chatCollectionViewController;
-@property (nonatomic, strong) UIView *messageContainer;
-@property (nonatomic, strong) UITextView *messageTextView;
-@property (nonatomic, strong) UIButton *messageSendButton;
-@property (nonatomic, strong) UILabel *messagePlaceholder;
 @property (nonatomic, strong) NSLayoutConstraint *messageTextViewHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *bottomSpacingConstraint;
 @property (nonatomic) CGFloat lastKeyboardHeight;
@@ -29,6 +25,11 @@ static const int BORChatRoomDefaultSpacing = 10;
 @end
 
 @implementation BORChatRoom
+
+@synthesize messageContainer = _messageContainer;
+@synthesize messagePlaceholder = _messagePlaceholder;
+@synthesize messageSendButton = _messageSendButton;
+@synthesize messageTextView = _messageTextView;
 
 #pragma mark - Lifecycle
 
@@ -119,9 +120,6 @@ static const int BORChatRoomDefaultSpacing = 10;
 
     _messageContainer = [[UIView alloc] init];
     _messageContainer.translatesAutoresizingMaskIntoConstraints = NO;
-    UIToolbar *blurToolbar = [[UIToolbar alloc] initWithFrame:self.view.bounds];
-    blurToolbar.autoresizingMask = self.view.autoresizingMask;
-    [_messageContainer addSubview:blurToolbar];
 
     UIView *separatorView = [[UIView alloc] init];
     separatorView.backgroundColor =  UIColorFromRGB(0xadadad);
@@ -190,7 +188,7 @@ static const int BORChatRoomDefaultSpacing = 10;
     _messageSendButton.titleLabel.font = [UIFont boldSystemFontOfSize:_messageSendButton.titleLabel.font.pointSize];
     [_messageSendButton addConstraint:[NSLayoutConstraint constraintWithItem:_messageSendButton
         attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil
-        attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:36.0]];
+        attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:40.0]];
     [_messageSendButton addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
     return _messageSendButton;
 }

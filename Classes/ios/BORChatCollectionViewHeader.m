@@ -27,7 +27,7 @@ static NSDateFormatter *dateFormatter;
     self =  [super initWithFrame:frame];
     if (!self)
         return nil;
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     self.sectionLabel = [[UILabel alloc] init];
 //    sectionLabel.text = [self.messagesBySections[indexPath.section][0] date].description;
     self.sectionLabel.textAlignment = NSTextAlignmentCenter;
