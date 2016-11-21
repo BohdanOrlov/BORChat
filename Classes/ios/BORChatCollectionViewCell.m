@@ -175,8 +175,7 @@ static NSCache *imageCache;
         return [imageCache objectForKey:key];
     if(!imageCache)
         imageCache = [[NSCache alloc] init];
-    UIImage *image = [[self colorImage:[UIImage imageNamed:name] withColor:color] stretchableImageWithLeftCapWidth:25
-        topCapHeight:18];
+    UIImage *image = [[self colorImage:[UIImage imageNamed:name inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] withColor:color] stretchableImageWithLeftCapWidth:25 topCapHeight:18];
     [imageCache setObject:image forKey:key];
     return image;
 }
